@@ -2,7 +2,7 @@ const field = new Image()
 const music = new Audio("music.m4a")
 const walksound = new Audio("walksound.m4a")
 
-let isWalking = false
+let isFirstStep = true
 
 const face = {
     frame1: new Image(),
@@ -42,32 +42,32 @@ function update(dt) {
 
         if (face.y < 700)
             face.y = 700
-
-        walksound.play()
+        else
+            walkingSound()
     }
     if (JSG.keyboard.keyList.includes(40)) {
         face.y += 1.5
 
         if (face.y > 875)
             face.y = 875
-
-        walksound.play()
+        else
+            walkingSound()
     }
     if (JSG.keyboard.keyList.includes(37)) {
         face.x -= 3
 
         if (face.x < -30)
             face.x = -30
-
-        walksound.play()
+        else
+            walkingSound()
     }
     if (JSG.keyboard.keyList.includes(39)) {
         face.x += 3
 
         if (face.x > 1600)
             face.x = 1600
-
-        walksound.play()
+        else
+            walkingSound()
     }
 
 }
@@ -96,8 +96,6 @@ function draw(rm) {
 
 }
 
-
-
 function changeFace() {
     switch (face.currentface) {
         case 1:
@@ -119,4 +117,11 @@ function changeFace() {
             break
     }
 
+}
+
+function walkingSound() {
+    if (isFirstStep) {
+        walksound.play()
+    } else if (walksound.ended)
+        walksound.play()
 }
