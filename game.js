@@ -122,6 +122,7 @@ function changeFace() {
 function walkingSound() {
     if (isFirstStep) {
         walksound.play()
+        isFirstStep = false
     } else if (walksound.ended)
         walksound.play()
 }
