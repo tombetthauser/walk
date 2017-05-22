@@ -1,4 +1,5 @@
 const field = new Image()
+const stuff = new Image()
 const music = new Audio("music.m4a")
 const walksound = new Audio("walksound.m4a")
 
@@ -19,6 +20,7 @@ const face = {
 
 function initialize() {
     field.src = "field.png"
+    stuff.src = "stuff.png"
     face.frame1.src = "face1.png"
     face.frame2.src = "face2.png"
     face.frame3.src = "face3.png"
@@ -48,24 +50,24 @@ function update(dt) {
     if (JSG.keyboard.keyList.includes(40)) {
         face.y += 1.5
 
-        if (face.y > 875)
-            face.y = 875
+        if (face.y > 1000)
+            face.y = 1000
         else
             walkingSound()
     }
     if (JSG.keyboard.keyList.includes(37)) {
         face.x -= 3
 
-        if (face.x < -30)
-            face.x = -30
+        if (face.x < 250)
+            face.x = 250
         else
             walkingSound()
     }
     if (JSG.keyboard.keyList.includes(39)) {
         face.x += 3
 
-        if (face.x > 1600)
-            face.x = 1600
+        if (face.x > 1350)
+            face.x = 1350
         else
             walkingSound()
     }
@@ -74,6 +76,7 @@ function update(dt) {
 
 function draw(rm) {
     JSG.context.drawImage(field, 0, 0)
+    JSG.context.drawImage(stuff, 0, 0)
     switch (face.currentface) {
         case 1:
             JSG.context.drawImage(face.frame1, face.x, face.y)
